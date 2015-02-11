@@ -1,35 +1,48 @@
-// function(event) {
-// 		event.preventDefault();
-// 	    $('html, body').animate({
-// 	        scrollTop: $(event.data.target).offset().top
-// 	    }, 1000);
-// 	}
+
 
 
 var blue ="#2176C7";
 var black = "#212121";
 
 
-var litems = document.getElementsByTagName('a');
-for(var i=0; i<litems.length; i++) {
-  	//litems[i].addEventListener("click", scroll);
-	litems[i].addEventListener("mouseover", mouseOver);
-	litems[i].addEventListener("mouseout", mouseOut);
-}
-
+var home_button = $("#erik-home-button");
+var menu_button = $(".menu-button");
 
 $(document).ready(function() { 
-	$("#erik-home-button").click({target:"#home-section", padding:0},scroll);
-	$("#portfolio-button").click({target:"#portfolio-section", padding:100},scroll);
-	$("#about-button").click({target:"#about-section", padding:0},scroll);
-	$("#contact-button").click({target:"#contact-section", padding:0},scroll);
+	home_button.click(scroll);
+    home_button.mouseover(mouseOver);
+    home_button.mouseout(mouseOut);
+
+
+    menu_button.click(scroll);
+    menu_button.mouseover(mouseOver);
+    menu_button.mouseout(mouseOut);
+
+    //
+    //$("#right-arrow").mouseover(
+    //        function(){
+    //            event.preventDefault();
+    //            this.className= "fa fa-arrow-circle-o-right fa-5x"
+    //        }
+    //    );
+    //$("#right-arrow").mouseout(
+    //    function(){
+    //        event.preventDefault();
+    //        this.className= "fa fa-arrow-circle-o-right fa-4x"
+    //    }
+    //);
 });
 
 function scroll(event) {
 	event.preventDefault();
-	$('html, body').animate({
- 	    scrollTop: $(event.data.target).position().top - event.data.padding
- 	}, 1000);
+    target = this.hash;
+    padding = 0;
+    if (target === "#portfolio-section")
+        padding = 100;
+
+    $('html, body').animate({
+        scrollTop: $(this.hash).position().top - padding
+    }, 1000);
 }
 
 function mouseOver(event) {

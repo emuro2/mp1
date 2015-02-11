@@ -3,30 +3,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Erik Muro</title>
+    <link rel="icon" href="/photos/erik.jpg" type="image/gif" sizes="16x16">
 	<link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
-	<nav class="navbar">
-		<img id="erik-photo" src="/photos/erik.jpg">
-		<a href="" id="erik-home-button">Erik Muro</a>
-		<ul class="nav-list">
-			<li>
-				<a href="" id="portfolio-button">Portfolio</a>
-			</li>
-			<li>
-				<a href="" id="about-button">About</a>
-			</li>
-			<li>
-				<a href="" id="contact-button">Contact</a>
-			</li>
-		</ul>
-	</nav>
+
 	<section class="intro" id="home-section">
 		<!-- alma mater : http://www.liuyangtang.com/img/adminImg/profile_logo_multiple/image%204-1382083478.jpg
 		     quad       : http://publish.illinois.edu/wp-content/themes/twentyeleven-illinois/images/headers/quad.jpg
 		     bardeen quad: http://awards.ec.illinois.edu/wp-content/uploads/2014/08/EC.Bardeen.Quad_.Two_.jpg -->
-		<ul id="carousel">
+        <i class="fa fa-arrow-circle-o-right fa-4x" id="right-arrow"></i>
+        <i class="fa fa-arrow-circle-o-left fa-4x" id="left-arrow"></i>
+        <ul id="carousel">
 			<li>
 				<img src="/photos/quad.jpg">
 			</li>
@@ -38,7 +28,21 @@
 			</li>
 		</ul>
 	</section>
-
+    <nav class="navbar">
+        <img id="erik-photo" src="/photos/erik.jpg">
+        <a href="#home-section" id="erik-home-button">Erik Muro</a>
+        <ul class="nav-list">
+            <li>
+                <a href="#portfolio-section" class="menu-button">Portfolio</a>
+            </li>
+            <li>
+                <a href="#about-section" class="menu-button">About</a>
+            </li>
+            <li>
+                <a href="#contact-section" class="menu-button">Contact</a>
+            </li>
+        </ul>
+    </nav>
 	<section class="white-section" id="portfolio-section">
 		<h1>Portfolio</h1>
 		<div >Erik Muro</div>
@@ -54,19 +58,25 @@
 		<div >Erik Muro</div>
 	</section>
 
-	<footer class="footer">
-		<ul class="social-media-list">
-			<li>
-				<a href="http://www.linkedin.com/pub/erik-muro/6b/363/72b/en"><img src="/photos/linkedin-icon.png">
-			</li>
-			<li>
-				<a href="http://www.facebook.com/"><img src="/photos/facebook-icon.png"></a>
-			</li>
-			<li>
-				<a href="http://www.github.com/emuro2"><img src="/photos/github-icon.png"></a>
-			</li>
-		</ul>
-	</footer>
+	<nav class="footer">
+        <ul class="social-media-list">
+            <li>
+                <a href="http://www.linkedin.com/pub/erik-muro/6b/363/72b/en">
+                    <img src="/photos/linkedin-icon.png">
+                </a>
+            </li>
+            <li>
+                <a href="http://www.facebook.com/">
+                    <img src="/photos/facebook-icon.png">
+                </a>
+            </li>
+            <li>
+                <a href="http://www.github.com/emuro2">
+                    <img src="/photos/github-icon.png">
+                </a>
+            </li>
+        </ul>
+	</nav>
 
 	<script src="lib/jquery-2.1.3.min/index.js"></script>
 	<script src="js/script.js"></script>
