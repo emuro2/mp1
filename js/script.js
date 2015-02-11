@@ -19,7 +19,7 @@ for(var i=0; i<litems.length; i++) {
 
 
 $(document).ready(function() { 
-	$("#home-button").click({target:"#home-section", padding:0},scroll);
+	$("#erik-home-button").click({target:"#home-section", padding:0},scroll);
 	$("#portfolio-button").click({target:"#portfolio-section", padding:100},scroll);
 	$("#about-button").click({target:"#about-section", padding:0},scroll);
 	$("#contact-button").click({target:"#contact-section", padding:0},scroll);
