@@ -9,9 +9,14 @@ h1 {
 	font-family: $font-primary;
 	font-size: 12.2rem;
 	font-weight: normal;
-	color: $black;
 }
 
+body {
+    background-image: url('/photos/almamater.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
 
 .navbar {
 	font-family: $font-primary;
@@ -57,22 +62,39 @@ h1 {
 }
 
 .intro {
-	margin-top: 200px;
+	margin-top: 110px;
 	width: 100%;
+    height:300px;
     overflow:hidden;
+    position:relative;
 
-    #right-arrow {
-        color: #CCCCCC;
-    }
+    .arrows {
+        color: $gray;
 
-    #left-arrow {
-        color: #CCCCCC;
+
+        #left {
+            left:0;
+            position: absolute;
+            top: 50%;
+            margin-top: -50px;
+        }
+
+        #right {
+
+            position: absolute;
+            right:0;
+            top: 50%;
+            margin-top: -50px;
+        }
     }
 	.carousel {
         width:100%;
         padding: 0;
         margin: 0;
+        float: left;
+        position: absolute;
         li {
+            width: 1200px;
             list-style: none;
             float:	left;
 		}
@@ -82,10 +104,17 @@ h1 {
 
 .white-section {
 	width: 100%;
+    background-color: $white;
+    color: $black;
+    opacity: 0.9;
 }
 
 .dark-section {
-	width: 100%;
+
+
+    width: 100%;
+
+    color: $white;
 }
 
 .footer {
