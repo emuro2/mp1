@@ -37,11 +37,35 @@
 
 	<section class="white-section" id="portfolio-section">
         <h1>Portfolio</h1>
-        <div id="dialog" title="Basic dialog">
-            <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+        <section>
+            <a href="#dialog" name="modal"><img src="/photos/facebook-icon.png"></a>
+        </section>
+        <section>
+            <a href="#dialogtest" name="modal"><img src="/photos/github-icon.png"></a>
+        </section>
+        <section>
+            <a href="#dialog" name="modal"><img src="/photos/linkedin-icon.png"></a>
+        </section>
+        <div id="boxes">
+
+            <!-- #customize your modal window here -->
+            <div id="dialog" class="window">
+                <b>Testing of Modal Window</b>
+
+                <!-- close button is defined as close class -->
+                <!--<a href="#" class="close">Close it</a>-->
+            </div>
+            <div id="dialogtest" class="window">
+                <b>test</b>
+
+                <!-- close button is defined as close class -->
+                <!--<a href="#" class="close">Close it</a>-->
+            </div>
+
+
+            <div id="mask"></div>
         </div>
-        <a href="#test" id="modal"><img src="/photos/erik.jpg" style="width: 50px; height:50px;"></a>
-	</section>
+    </section>
 
 	<section class="dark-section" id="about-section">
         <h1>About</h1>
@@ -71,7 +95,6 @@
 	<section class="white-section" id="contact-section">
         <div>
             <h1>Contact</h1>
-
         </div>
 	</section>
     <nav class="navbar">

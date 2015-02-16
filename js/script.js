@@ -1,5 +1,7 @@
 
-
+//References:
+//http:www.stackoverflow.com
+//http://www.queness.com/post/77/simple-jquery-modal-window-tutorial
 
 var blue ="#2176C7";
 var black = "#212121";
@@ -15,6 +17,8 @@ var carousel = $("#carousel");
 
 $(document).ready(function() {
 
+
+
     //home button ("Erik Muro")
 	home_button.click(smoothscroll);
     home_button.mouseover(mouseOver);
@@ -26,13 +30,74 @@ $(document).ready(function() {
     menu_button.mouseout(mouseOut);
 
     //carousel arrows
-    //arrow_buttons.click(slide);
+    arrow_buttons.click(slide);
     arrow_buttons.mouseover(mouseOver);
     arrow_buttons.mouseout(mouseOut);
 
     $(window).scroll(positionIndicator);
 
 
+
+    //select all the a tag with name equal to modal
+    $('a[name=modal]').click(function(e) {
+        //Cancel the link behavior
+        e.preventDefault();
+        $("body").css("overflow",'hidden');
+        //Get the A tag
+        var id = $(this).attr('href');
+
+        //Get the screen height and width
+        var maskHeight = $(document).height();
+        var maskWidth = $(document).width();
+
+
+        //Set height and width to mask to fill up the whole screen
+        $('#mask').css({'width':maskWidth,'height':maskHeight, top:0});
+
+        //transition effect
+        //$('#mask').fadeIn(1000);
+        $('#mask').fadeTo("slow",1);
+
+        //Get the window height and width
+        var winH = $(window).height();
+        var winW = $(window).width();
+
+        //Set the popup window to center
+        $(id).css('top', winH/2-$(id).height()/2 );
+        $(id).css('left', winW/2-$(id).width()/2);
+
+
+        //transition effect
+        $(id).fadeIn(2000);
+
+    });
+
+
+
+    //if mask is clicked
+    $('#mask').click(function () {
+        $(this).hide();
+        $('.window').hide();
+        $("body").css("overflow","");
+    });
+
+
+    $(window).resize(function () {
+        var box = $('#boxes .window');
+        //Get the screen height and width
+        var maskHeight = $(document).height();
+        var maskWidth = $(window).width();
+
+        //Set height and width to mask to fill up the whole screen
+        $('#mask').css({'width':maskWidth,'height':maskHeight});
+
+        //Get the window height and width
+        var winH = $(window).height();
+        var winW = $(window).width();
+        //Set the popup window to center
+        box.css('top',  winH/2 - box.height()/2);
+        box.css('left', winW/2 - box.width()/2);
+    });
 
 
     //
@@ -107,12 +172,12 @@ function positionIndicator(event) {
 
     //resizing navbar and items
     if(windowTop > 400){
-        $(".navbar").animate({"padding": "10px 40px", "font-size":"1.8rem"}, 300).clearQueue();
-        $("#erik-photo").animate({width:"35", height:"35", margin:"5"},300).clearQueue();
+        $(".navbar").animate({"padding": "10px 40px", "font-size":"1.8rem"}, 100).clearQueue();
+        $("#erik-photo").animate({width:"35", height:"35", margin:"5"},100).clearQueue();
     }
     else {
-        $(".navbar").animate({"padding": "30px 40px", "font-size":"2.2rem"}, 500).clearQueue();
-        $("#erik-photo").animate({width:"45", height:"45", margin:"0"},300).clearQueue();
+        $(".navbar").animate({"padding": "30px 40px", "font-size":"2.2rem"}, 50).clearQueue();
+        $("#erik-photo").animate({width:"45", height:"45", margin:"0"},50).clearQueue();
     }
 }
 
@@ -165,8 +230,8 @@ function mouseOut(event) {
     }
 }
 
-//function slide(event){
-//    event.preventDefault();
+function slide(event){
+    event.preventDefault();
 //    var carousel = $("#carousel");
 //    var target = this.hash;
 //
@@ -228,4 +293,4 @@ function mouseOut(event) {
 //
 //        });
 //    }
-//}
+}
