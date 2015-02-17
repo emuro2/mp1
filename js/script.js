@@ -203,5 +203,5 @@ function slide(event) {
 function submitMessage(event){
     event.preventDefault();
     alert("Thank you for your message "+$('input[name="name"]').val());
-    $("#contact-form").find("input[type=text],input[type=email], textarea").val("");
+    $("#contact-form").find("input, textarea").val("");
 }
