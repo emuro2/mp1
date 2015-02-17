@@ -1,7 +1,8 @@
 
 //References:
-//http:www.stackoverflow.com
-//http://www.queness.com/post/77/simple-jquery-modal-window-tutorial
+    //http:www.stackoverflow.com
+    //http://www.queness.com/post/77/simple-jquery-modal-window-tutorial
+    //http://css3.bradshawenterprises.com/cfimg/
 
 var blue ="#2176C7";
 var black = "#212121";
@@ -13,19 +14,19 @@ var about =$("#about-section");
 var portfolio =$("#portfolio-section");
 var arrow_buttons = $(".arrows");
 var carousel = $("#carousel");
-
+var image_num = 0;
 
 $(document).ready(function() {
 
-
+    $("#submit-button").click(submitMessage);
 
     //home button ("Erik Muro")
-	home_button.click(smoothscroll);
+	home_button.click(smoothScroll);
     home_button.mouseover(mouseOver);
     home_button.mouseout(mouseOut);
 
     //menu buttons (i.e. About)
-    menu_button.click(smoothscroll);
+    menu_button.click(smoothScroll);
     menu_button.mouseover(mouseOver);
     menu_button.mouseout(mouseOut);
 
@@ -99,56 +100,6 @@ $(document).ready(function() {
         box.css('left', winW/2 - box.width()/2);
     });
 
-
-    //
-    ////grab the width and calculate left value
-    //var item_width = $('#carousel li').outerWidth();
-    //var left_value = item_width * (-1);
-    //
-    ////move the last item before first item, just in case user click prev button
-    //$('#carousel li:first').before($('#carousel li:last'));
-    //
-    ////set the default item to the correct position
-    //$('#carousel li').css({'left' : left_value});
-    //
-    //
-    //
-    ////if user clicked on prev button
-    //$('#left').click(function() {
-    //    event.preventDefault();
-    //    //get the right position
-    //    var left_indent = parseInt($('#carousel ul').css('left')) + item_width;
-    //    //slide the item
-    //    $('#carousel ul').animate({'left' : left_indent}, 200,function(){
-    //        //move the last item and put it as first item
-    //        $('#carousel li:first').before($('#carousel li:last'));
-    //        //set the default item to correct position
-    //        $('#carousel li').css({'left' : left_value});
-    //    });
-    //
-    //});
-    //
-    ////if user clicked on next button
-    //$('#right').click(function() {
-    //    event.preventDefault();
-    //    //get the right position
-    //    var left_indent = parseInt($('#carousel ul').css('left')) - item_width;
-    //
-    //    //slide the item
-    //    $('#carousel ul').animate({'left' : left_indent}, 200, function () {
-    //
-    //        //move the first item and put it as last item
-    //        $('#carousel li:last').after($('#carousel li:first'));
-    //
-    //        //set the default item to correct position
-    //        $('#carousel li').css({'left' : left_value});
-    //    });
-    //
-    //});
-
-
-
-
 });
 
 
@@ -182,7 +133,7 @@ function positionIndicator(event) {
 }
 
 //smooth scrolling
-function smoothscroll(event) {
+function smoothScroll(event) {
 	event.preventDefault();
     var target = this.hash;
     var padding = 0;
@@ -230,67 +181,27 @@ function mouseOut(event) {
     }
 }
 
-function slide(event){
+function slide(event) {
     event.preventDefault();
-//    var carousel = $("#carousel");
-//    var target = this.hash;
-//
-//    if (target === "#right") {
-//        ////get the width of the items ( i like making the jquery part dynamic, so if you change the width in the css you won't have o change it here too ) '
-//        //var item_width = $("#carousel li").outerWidth() ;
-//        ////calculate the new left indent of the unordered list
-//        //var left_indent = parseInt(carousel.css('left')) + item_width;
-//        //
-//        ////make the sliding effect using jquery's anumate function '
-//        //carousel.animate({'left': left_indent}, {queue: false, duration: 200}, function () {
-//        //
-//        //    //get the first list item and put it after the last list item (that's how the infinite effects is made) '
-//        //    //$('#carousel li:last').after($('#carousel li:first'));
-//        //    carousel.find("li:last").after(carousel.find("li:first"));
-//        //
-//        //    //and get the left indent to the default -210px
-//        //    carousel.css({'left': '-1276px'});
-//        //});
-//        var item_width = $('#carousel li').outerWidth();
-//        var left_value = item_width * (-1);
-//        //get the right position
-//        var left_indent = parseInt($('#carousel').css('left')) + item_width;
-//        //slide the item
-//        $('#carousel').animate({'left' : left_indent}, 200,function(){
-//            //move the last item and put it as first item
-//            $('#carousel li:first').before($('#carousel li:last'));
-//            //set the default item to correct position
-//            $('#carousel').css({'left' : left_value});
-//
-//        });
-//    }
-//    else {
-//        //var item_width = $('#carousel li').outerWidth() ;
-//        //
-//        ///* same as for sliding right except that it's current left indent + the item width (for the sliding right it's - item_width) */
-//        //var left_indent = parseInt(carousel.css('left')) - item_width;
-//        //
-//        //carousel.animate({'left' : left_indent},{queue:false, duration:200},function(){
-//        //
-//        //    /* when sliding to left we are moving the last item before the first item */
-//        //    //$('#carousel li:first').before($('#carousel li:last'));
-//        //    carousel.find("li:last").before(carousel.find("li:first"));
-//        //
-//        //    /* and again, when we make that change we are setting the left indent of our unordered list to the default -210px */
-//        //    carousel.css({'left' : '-1276px'});
-//        //});
-//
-//        var item_width = $('#carousel li').outerWidth();
-//        var left_value = item_width * (-1);
-//        //get the right position
-//        var left_indent = parseInt($('#carousel').css('left')) - item_width;
-//        //slide the item
-//        $('#carousel').animate({'left' : left_indent}, 200,function(){
-//            //move the last item and put it as first item
-//            $('#carousel li:first').after($('#carousel li:last'));
-//            //set the default item to correct position
-//            $('#carousel').css({'left' : left_value});
-//
-//        });
-//    }
+    var target = this.hash;
+
+    if (target === "#right") {
+        $("#carousel img").removeClass("opaque");
+        image_num = (image_num + 1) % 3
+        $("#carousel img").eq(image_num).addClass("opaque");
+
+    }
+    else {
+        $("#carousel img").removeClass("opaque");
+        image_num = (image_num - 1) % 3
+        $("#carousel img").eq(image_num).addClass("opaque");
+    }
+
+}
+
+
+function submitMessage(event){
+    event.preventDefault();
+    alert("Thank you for your message "+$('input[name="name"]').val());
+    $("#contact-form").find("input[type=text], textarea").val("");
 }

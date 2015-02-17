@@ -11,21 +11,10 @@
 <body>
 
 	<section class="intro" id="home-section">
-		<!-- alma mater : http://www.liuyangtang.com/img/adminImg/profile_logo_multiple/image%204-1382083478.jpg
-		     quad       : http://publish.illinois.edu/wp-content/themes/twentyeleven-illinois/images/headers/quad.jpg
-		     bardeen quad: http://awards.ec.illinois.edu/wp-content/uploads/2014/08/EC.Bardeen.Quad_.Two_.jpg -->
         <div id="carousel">
-            <ul>
-                <li>
-                    <img  src="/photos/quad.jpg" >
-                </li>
-                <li>
-                    <img src="/photos/bardeenquad.jpg">
-                </li>
-                <li>
-                    <img src="/photos/almamater.jpg">
-                </li>
-            </ul>
+            <img class='opaque' src="/photos/quad.jpg" />
+            <img src="/photos/bardeenquad.jpg" />
+            <img src="/photos/almamater.jpg" />
         </div>
         <a href="#left" class="arrows">
             <i class="fa fa-arrow-circle-o-left fa-4x" id="left"></i>
@@ -38,30 +27,43 @@
 	<section class="white-section" id="portfolio-section">
         <h1>Portfolio</h1>
         <section>
-            <a href="#dialog" name="modal"><img src="/photos/facebook-icon.png"></a>
+            <h3>Project</h3>
+            <a href="#graphics" name="modal"><img src="photos/video.png"></a>
         </section>
         <section>
-            <a href="#dialogtest" name="modal"><img src="/photos/github-icon.png"></a>
+            <h3>Skills</h3>
+            <a href="#skills" name="modal"><img src="photos/skills.png"></a>
         </section>
         <section>
-            <a href="#dialog" name="modal"><img src="/photos/linkedin-icon.png"></a>
+            <h3>Resume</h3>
+            <a href="#resume" name="modal"><img src="photos/resume.png"></a>
         </section>
         <div id="boxes">
-
-            <!-- #customize your modal window here -->
-            <div id="dialog" class="window">
-                <b>Testing of Modal Window</b>
-
-                <!-- close button is defined as close class -->
-                <!--<a href="#" class="close">Close it</a>-->
+            <div id="graphics" class="window">
+                <p>
+                    This was a project in my Interactive Computer Graphics course.
+                    <a href="https://github.com/emuro2/Teapot-Texture-Mapping" target="_blank">More...</a>
+                </p>
+                <video controls>
+                    <source src="videos/teapot.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
-            <div id="dialogtest" class="window">
-                <b>test</b>
+            <div id="skills" class="window">
 
-                <!-- close button is defined as close class -->
-                <!--<a href="#" class="close">Close it</a>-->
+                <h3>Technical Skills:</h3>
+                <p>Java, and C++ (proficient). C (competent). J2EE, JSF, HTML, iOS (knowledgeable)</p>
+                <p>Operating Systems: Microsoft Windows, Linux, and Macintosh OS</p>
+                <p>IDE, API, Object-Oriented, Parallel programming experience</p>
+
+                <h3>Nontechnical Skills:</h3>
+                <p>Hard working, punctual, and dedicated with great ingenuity and leadership skill</p>
+                <p>Enjoy collaborating and working through a difficult problem with team members</p>
+                <p>Bilingual (Spanish)</p>
             </div>
-
+            <div id="resume" class="window">
+                <embed src="files/resume.pdf">
+            </div>
 
             <div id="mask"></div>
         </div>
@@ -93,9 +95,17 @@
 	</section>
 
 	<section class="white-section" id="contact-section">
-        <div>
-            <h1>Contact</h1>
-        </div>
+        <h1>Contact</h1>
+        <section>
+            <form id="contact-form">
+                <input type="text" name="name"  placeholder="Name">
+                <input type="email" name="email" placeholder="john123@email.com">
+                <input type="text" name="subject" placeholder="Subject">
+                <textarea id="message" name="message" placeholder="Message" required="required" ></textarea>
+                <br><br>
+                <input type="submit" id="submit-button">
+            </form>
+        </section>
 	</section>
     <nav class="navbar">
         <img id="erik-photo" src="/photos/erik.jpg">

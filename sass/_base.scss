@@ -23,6 +23,12 @@ p {
     font-weight: normal;
 }
 
+b{
+    font-family: $font-montserrat;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
 html {
     background-image: url('/photos/almamater.jpg');
     background-repeat: no-repeat;
@@ -80,17 +86,15 @@ html {
 .intro {
 	margin-top: 50px;
 	width: 100%;
-    height:400px;
+    height:500px;
     position:relative;
+    background-color: $white;
 
     .arrows {
-        margin-top:25px;
+        margin-top:35px;
         color: $white;
         opacity: 0.8;
         transition: opacity .25s ease-in-out;
-        -moz-transition: opacity .25s ease-in-out;
-        -webkit-transition: opacity .25s ease-in-out;
-
 
         :hover {
             opacity: 0.2;
@@ -101,53 +105,42 @@ html {
             left:0;
             position: absolute;
             top: 50%;
-            margin-top: -50px;
         }
 
         #right {
-
             position: absolute;
             right:0;
             top: 50%;
-            margin-top: -50px;
         }
     }
-	#carousel {
+
+    #carousel {
         position:relative;
-        overflow:hidden;
+        height:100%;
         width:100%;
-        height:400px;
-        ul {
-            position:relative;
+
+        img {
+            width:100%;
+            height: 100%;
+            position:absolute;
             left:0;
-            top:50px;
-            list-style:none;
-            margin:0;
-            padding:0;
-
-            li {
-//                display: inline;
-//                width: 1276px;
-                width:100%;
-                height: 100%;
-                float: left;
-  //            position:absolute;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
-            }
+            transition: opacity 1s ease-in-out;
+            opacity:0;
+            filter: alpha(opacity=0);
         }
 
-	}
+        .opaque {
+            opacity:1;
+            filter: alpha(opacity=1);
+        }
+    }
 }
 
 #portfolio-section{
     section {
         float: left;
         width: 30%;
-        margin: 0 1.5% 24px 1.5%;
+        margin: 24px 1.5% 24px 1.5%;
         text-align: center;
 
         img{
@@ -159,7 +152,7 @@ html {
     #boxes{
         width:100%;
         height:100%;
-        /* Z-index of #mask must lower than #boxes .window */
+
         #mask {
             position:fixed;
             z-index:90;
@@ -169,8 +162,8 @@ html {
 
         .window {
             position:fixed;
-            width:500px;
-            height:300px;
+            width:50%;
+            height:50%;
             margin: 0 auto;
             display:none;
             z-index:100;
@@ -180,11 +173,27 @@ html {
             border-radius: 35px;
 
         }
-        /* Customize your modal window here, you can add background image too */
-//        #dialog {
-//            width:500px;
-//            height:300px;
-//        }
+
+        div {
+            width:50%;
+            height:50%;
+
+            p, h3{
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            video{
+                width:100%;
+                height:70%;
+                margin: 25px auto;
+            }
+            embed{
+                width:100%;
+                height:100%;
+                margin: 0px auto;
+            }
+        }
     }
 }
 
@@ -202,6 +211,29 @@ html {
         padding-bottom: 25px;
     }
 
+    section{
+
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+
+        input{
+            width: 50%;
+            height: 25px;
+            margin: 0 auto;
+            display: block;
+        }
+        textarea{
+            width: 50%;
+            height: 70px;
+            margin: 0 auto;
+            display: block;
+            resize: none;
+        }
+
+
+    }
+
 }
 
 .dark-section {
@@ -209,6 +241,11 @@ html {
     width: 100%;
     color: $white;
     height:400px;
+    text-shadow:
+    -1px -1px 0 $black,
+    1px -1px 0 $black,
+    -1px 1px 0 $black,
+    1px 1px 0 $black;
     h1 {
         width: 275px;
         margin: 0 auto;
@@ -220,6 +257,7 @@ html {
         width: 30%;
         margin: 0 1.5% 24px 1.5%;
         text-align: center;
+
         h3{
             width: 300px;
             margin: 0 auto;
