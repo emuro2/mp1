@@ -6,6 +6,8 @@
 
 var blue ="#2176C7";
 var black = "#212121";
+var white = "#ffffff";
+var gray = "#EEEEEE";
 
 var home_button = $("#erik-home-button");
 var menu_button = $(".menu-button");
@@ -161,7 +163,7 @@ function mouseOver(event) {
         }
     }
     else {
-        this.style.color = blue;
+        this.style.backgroundColor = gray;
     }
 }
 
@@ -177,7 +179,7 @@ function mouseOut(event) {
         }
     }
     else {
-        this.style.color = black;
+        this.style.backgroundColor = white;
     }
 }
 
@@ -189,7 +191,6 @@ function slide(event) {
         $("#carousel img").removeClass("opaque");
         image_num = (image_num + 1) % 3
         $("#carousel img").eq(image_num).addClass("opaque");
-
     }
     else {
         $("#carousel img").removeClass("opaque");
