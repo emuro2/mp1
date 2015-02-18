@@ -10,9 +10,6 @@ var gray = "#EEEEEE";
 
 var home_button = $("#erik-home-button");
 var menu_button = $(".menu-button");
-var contact =$("#contact-section");
-var about =$("#about-section");
-var portfolio =$("#portfolio-section");
 var arrow_buttons = $(".arrows");
 var image_num = 0;
 
@@ -55,16 +52,14 @@ function positionIndicator(event) {
     home_button.css("color", "");
     menu_button.css("color","");
 
-    //highlight position
-    if((contact.position().top - windowTop) < 0)
-        menu_button[2].style.color = blue;
-    else if ((about.position().top - windowTop) < 0)
-        menu_button[1].style.color = blue;
-    else if ((portfolio.position().top - windowTop) < 0)
-        menu_button[0].style.color = blue;
-    else
-        home_button[0].style.color = blue;
-
+    for (i = menu_button.length-1; i > -1; i--){
+        if (($(menu_button[i].hash).position().top - windowTop) < 0) {
+            menu_button[i].style.color = blue;
+            break;
+        }
+        else if (i == 0)
+            $("#erik-home-button")[0].style.color = blue;
+    }
 
     //resizing navbar and items
     if(windowTop > 400){
