@@ -5,7 +5,6 @@
     //http://css3.bradshawenterprises.com/cfimg/
 
 var blue ="#2176C7";
-var black = "#212121";
 var white = "#ffffff";
 var gray = "#EEEEEE";
 
@@ -15,12 +14,11 @@ var contact =$("#contact-section");
 var about =$("#about-section");
 var portfolio =$("#portfolio-section");
 var arrow_buttons = $(".arrows");
-var carousel = $("#carousel");
 var image_num = 0;
 
 $(document).ready(function() {
-
-    $("#submit-button").click(submitMessage);
+    //set image_num = 0
+    image_num = 0;
 
     //home button ("Erik Muro")
 	home_button.click(smoothScroll);
@@ -37,76 +35,21 @@ $(document).ready(function() {
     arrow_buttons.mouseover(mouseOver);
     arrow_buttons.mouseout(mouseOut);
 
+    //position indicator events
     $(window).scroll(positionIndicator);
 
+    //modal events
+    $('.modal').click(modal);
+    $('#mask').click(hideMask);
+    $(window).resize(resizeModal);
 
-
-    //select all the a tag with name equal to modal
-    $('a[name=modal]').click(function(e) {
-        //Cancel the link behavior
-        e.preventDefault();
-        $("body").css("overflow",'hidden');
-        //Get the A tag
-        var id = $(this).attr('href');
-
-        //Get the screen height and width
-        var maskHeight = $(document).height();
-        var maskWidth = $(document).width();
-
-
-        //Set height and width to mask to fill up the whole screen
-        $('#mask').css({'width':maskWidth,'height':maskHeight, top:0});
-
-        //transition effect
-        //$('#mask').fadeIn(1000);
-        $('#mask').fadeTo("slow",1);
-
-        //Get the window height and width
-        var winH = $(window).height();
-        var winW = $(window).width();
-
-        //Set the popup window to center
-        $(id).css('top', winH/2-$(id).height()/2 );
-        $(id).css('left', winW/2-$(id).width()/2);
-
-
-        //transition effect
-        $(id).fadeIn(2000);
-
-    });
-
-
-
-    //if mask is clicked
-    $('#mask').click(function () {
-        $(this).hide();
-        $('.window').hide();
-        $("body").css("overflow","");
-    });
-
-
-    $(window).resize(function () {
-        var box = $('#boxes .window');
-        //Get the screen height and width
-        var maskHeight = $(document).height();
-        var maskWidth = $(window).width();
-
-        //Set height and width to mask to fill up the whole screen
-        $('#mask').css({'width':maskWidth,'height':maskHeight});
-
-        //Get the window height and width
-        var winH = $(window).height();
-        var winW = $(window).width();
-        //Set the popup window to center
-        box.css('top',  winH/2 - box.height()/2);
-        box.css('left', winW/2 - box.width()/2);
-    });
-
+    //form events
+    $("#submit-button").click(submitMessage);
 });
 
 
 
-
+//position indicator which highlights menu buttons
 function positionIndicator(event) {
     windowTop = $(window).scrollTop()+200;
     home_button.css("color", "");
@@ -183,6 +126,7 @@ function mouseOut(event) {
     }
 }
 
+//Carousel fade in and out effects
 function slide(event) {
     event.preventDefault();
     var target = this.hash;
@@ -197,12 +141,55 @@ function slide(event) {
         image_num = (image_num - 1) % 3
         $("#carousel img").eq(image_num).addClass("opaque");
     }
-
 }
+
+//enables the modal window
+function modal(event) {
+    event.preventDefault();
+
+    //prevents scrolling while modal is open
+    $("body").css("overflow",'hidden');
+
+    var display = this.hash;
+    var maskHeight = $(document).height();
+    var maskWidth = $(document).width();
+    $('#mask').css({'width':maskWidth,'height':maskHeight, top:0});
+    $('#mask').fadeTo("slow",1);
+
+    var windowHeight = $(window).height();
+    var windowWidth = $(window).width();
+    $(display).css('top', windowHeight/2-$(display).height()/2 );
+    $(display).css('left', windowWidth/2-$(display).width()/2);
+    $(display).fadeIn(2000);
+}
+
+//disables the modal window
+function hideMask(event) {
+    $(this).hide();
+    $('.window').hide();
+
+    //enables scrolling again
+    $("body").css("overflow","");
+}
+
+//dynamically resize the modal screen if the user zooms.
+function resizeModal(event) {
+    var box = $('#boxes .window');
+
+    var maskHeight = $(document).height();
+    var maskWidth = $(document).width();
+    $('#mask').css({'width':maskWidth,'height':maskHeight, top:0});
+
+    var windowHeight = $(window).height();
+    var windowWidth = $(window).width();
+    box.css('top',  windowHeight/2 - box.height()/2);
+    box.css('left', windowWidth/2 - box.width()/2);
+}
+
 
 
 function submitMessage(event){
     event.preventDefault();
     alert("Thank you for your message "+$('input[name="name"]').val());
-    $("#contact-form").find("input, textarea").val("");
+    $("#contact-form").find('input[name="name"], input[name="email"], input[name="subject"], textarea').val("");
 }
