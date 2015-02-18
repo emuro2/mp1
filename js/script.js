@@ -169,7 +169,7 @@ function hideMask(event) {
 
 //dynamically resize the modal screen if the user zooms.
 function resizeModal(event) {
-    var popup = $('#popups .window');
+    var box = $('#boxes .window');
 
     var maskHeight = $(document).height();
     var maskWidth = $(document).width();
@@ -177,8 +177,8 @@ function resizeModal(event) {
 
     var windowHeight = $(window).height();
     var windowWidth = $(window).width();
-    popup.css('top',  windowHeight/2 - popup.height()/2);
-    popup.css('left', windowWidth/2 - popup.width()/2);
+    box.css('top',  windowHeight/2 - box.height()/2);
+    box.css('left', windowWidth/2 - box.width()/2);
 }
 
 
